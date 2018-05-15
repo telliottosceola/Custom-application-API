@@ -65,7 +65,7 @@ It is possible to send a reboot command over the USB connection to reboot the sy
 >Example: ```{relay:"reboot"}```</br>
 
 ### Device Checkin over USB
-The device checks in on interval over USB.  At time of checkin the controller will output all Configurable settings as documented above as well as the following information.
+The device checks in on interval over USB.  At time of checkin the controller will report the following information in JSON format.
 
 > **Event Type** </br>
 >Key: ```event_type```</br>
@@ -97,11 +97,53 @@ The device checks in on interval over USB.  At time of checkin the controller wi
 >Example: ```{"wifi_connected":"true"}```</br>
 >Description: Indication as to whether or not the device is currently connected a WiFi network.  true if connected, false if not.</br>
 
+> **WiFi Network SSID** </br>
+>Key: ```ssid```</br>
+>Value type: ```String```</br>
+>Example: ```{"ssid":"myWiFiNetworkSSID"}```</br>
+>Description: This is the stored network SSID of the device which it will attempt to connect to on boot.</br>
+
 > **Input** </br>
 >Key: ```input```</br>
 >Value type: ```String```</br>
 >Example: ```{"input":"open"}```</br>
 >Description: The current status of the controllers on board input.  value:open if the input is open, value:closed if the input is closed.</br>
+
+> **Checkin Interval** </br>
+>Key: ```interval```</br>
+>Value type: ```String```</br>
+>Example: ```{"interval":"5"}```</br>
+>Description: Interval in seconds at which the device will checkin over USB and to the remote HTTPS server</br>
+
+> **Remote Server URL** </br>
+>Key: ```server_url```</br>
+>Value type: ```String```</br>
+>Example: ```{"server_url":"google.com"}```</br>
+>Description: The stored URL of the server which the device connects to via HTTPS on checkin</br>
+
+> **Remote Server Path** </br>
+>Key: ```path```</br>
+>Value type: ```String```</br>
+>Example: ```{"path":"/api/circuit_reboot_check"}```</br>
+>Description: The server endpoint path which checkin requests are made</br>
+
+> **Server SSL Certificate Fingerprint** </br>
+>Key: ```finger_print```</br>
+>Value type: ```String```</br>
+>Example: ```{"finger_print":"00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0F 10 11 12 13 14"}```</br>
+>Description: The SSL certificate fingerprint for the server which the controller will make requests to.</br>
+
+> **Server Connection Port** </br>
+>Key: ```server_port```</br>
+>Value type: ```String```</br>
+>Example: ```{"server_port":443}```</br>
+>Description: The port the controller will connect to when making HTTPS requests.  Default value is 443, only configure if needed.</br>
+
+> **Pulse Duration** </br>
+>Key: ```pulse_duration```</br>
+>Value type: ```String```</br>
+>Example: ```{"pulse_duration":200}```</br>
+>Description: The duration which the relay will be pulsed when a reboot command is received.  Note: Setting this shoudl not be required on most systems.  Default value is 200</br>
 
 > **Server Connection Status** </br>
 >Key: ```server_connection```</br>
