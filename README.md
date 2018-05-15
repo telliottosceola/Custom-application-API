@@ -12,102 +12,102 @@ Controller accepts setting configurations sent via JSON format over USB connecti
 All settings documented here are stored in device EEPROM and will pursist device power cycles.  Changes to WiFi network settings will cause WiFi to disconnect temporarily and then connect with new WiFi network settings.
 
 > **WiFi SSID**</br>
->Key: ```ssid```
->Value type: ```String```
->Example: ```{"ssid":"my_wifi"}```
+>Key: ```ssid```</br>
+>Value type: ```String```</br>
+>Example: ```{"ssid":"my_wifi"}```</br>
 
-> **WiFi passphrase**
->Key: ```pass```
->Value type: ```String```
->Example: ```{"pass":"superSecurePassword"}```
+> **WiFi passphrase**</br>
+>Key: ```pass```</br>
+>Value type: ```String```</br>
+>Example: ```{"pass":"superSecurePassword"}```</br>
 
-> **Server Checkin Interval** 
->Key: ```interval```
->Value type: ```String```
->Example: ```{"interval":5}```
->Description: The interval in seconds at which the controller should check in over USB and with the HTTPS server.
+> **Server Checkin Interval** </br>
+>Key: ```interval```</br>
+>Value type: ```String```</br>
+>Example: ```{"interval":5}```</br>
+>Description: The interval in seconds at which the controller should check in over USB and with the HTTPS server.</br>
 
-> **Server Checkin Interval** 
->Key: ```server```
->Value type: ```String```
->Example: ```{"server":"google.com"}```
->Description: The server which the controller will check in with on interval.  Do not include https://
+> **Server Checkin Interval** </br>
+>Key: ```server```</br>
+>Value type: ```String```</br>
+>Example: ```{"server":"google.com"}```</br>
+>Description: The server which the controller will check in with on interval.  Do not include https://</br>
 
-> **Server Endpoint Path** 
->Key: ```path```
->Value type: ```String```
->Example: ```{"path":"/api/circuit_reboot_check"}```
->Description: The server endpoint which check in requests will be made.
+> **Server Endpoint Path** </br>
+>Key: ```path```</br>
+>Value type: ```String```</br>
+>Example: ```{"path":"/api/circuit_reboot_check"}```</br>
+>Description: The server endpoint which check in requests will be made.</br>
 
-> **Server SSL Certificate Fingerprint** 
->Key: ```finger_print```
->Value type: ```String```
->Example: ```{"finger_print":"00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0F 10 11 12 13 14"}```
->Description: The SSL certificate fingerprint for the server which the controller will make requests to.
+> **Server SSL Certificate Fingerprint** </br>
+>Key: ```finger_print```</br>
+>Value type: ```String```</br>
+>Example: ```{"finger_print":"00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0F 10 11 12 13 14"}```</br>
+>Description: The SSL certificate fingerprint for the server which the controller will make requests to.</br>
 
-> **Server Connection Port** 
->Key: ```server_port```
->Value type: ```String```
->Example: ```{"server_port":443}```
->Description: The port the controller will connect to when making HTTPS requests.  Default value is 443, only configure if needed.
+> **Server Connection Port** </br>
+>Key: ```server_port```</br>
+>Value type: ```String```</br>
+>Example: ```{"server_port":443}```</br>
+>Description: The port the controller will connect to when making HTTPS requests.  Default value is 443, only configure if needed.</br>
 
-> **Pulse Duration** 
->Key: ```pulse_duration```
->Value type: ```String```
->Example: ```{"pulse_duration":200}```
->Description: The duration which the relay will be pulsed when a reboot command is received.  Note: Setting this shoudl not be required on most systems.  Default value is 200
+> **Pulse Duration** </br>
+>Key: ```pulse_duration```</br>
+>Value type: ```String```</br>
+>Example: ```{"pulse_duration":200}```</br>
+>Description: The duration which the relay will be pulsed when a reboot command is received.  Note: Setting this shoudl not be required on most systems.  Default value is 200</br>
 
 ### Reboot over USB
 It is possible to send a reboot command over the USB connection to reboot the system.  To do this simply send the following JSON command
-> **Reboot**
->Key: ```relay```
->Value type: ```String```
->Example: ```{relay:"reboot"}```
+> **Reboot**</br>
+>Key: ```relay```</br>
+>Value type: ```String```</br>
+>Example: ```{relay:"reboot"}```</br>
 
 ### Device Checkin over USB
 The device checks in on interval over USB.  At time of checkin the controller will output all Configurable settings as documented above as well as the following information.
 
-> **Event Type** 
->Key: ```event_type```
->Value type: ```String```
->Example: ```{"event_type":"INFO"}```
->Description: This indicates the type of event being reported by the device.  Possible values are ERROR, INFO, INTERVAL.
+> **Event Type** </br>
+>Key: ```event_type```</br>
+>Value type: ```String```</br>
+>Example: ```{"event_type":"INFO"}```</br>
+>Description: This indicates the type of event being reported by the device.  Possible values are ERROR, INFO, INTERVAL.</br>
 
-> **Event Reason** 
->Key: ```event_reason```
->Value type: ```String```
->Example: ```{"event_reason":"WiFi Connect Failed"}```
->Description: The controller can checkin over USB or HTTPS for a multitude of reasons.  This value indicates why the device has checked in.  Current possible reasons are WiFi Connect Failed, WiFi Connected, Input Change, Check In, Save Settings failed Could not parse JSON, Settings Update, Server does not recognize device, Parse Server response failed Could not parse JSON, Certificate does not match.
+> **Event Reason** </br>
+>Key: ```event_reason```</br>
+>Value type: ```String```</br>
+>Example: ```{"event_reason":"WiFi Connect Failed"}```</br>
+>Description: The controller can checkin over USB or HTTPS for a multitude of reasons.  This value indicates why the device has checked in.  Current possible reasons are WiFi Connect Failed, WiFi Connected, Input Change, Check In, Save Settings failed Could not parse JSON, Settings Update, Server does not recognize device, Parse Server response failed Could not parse JSON, Certificate does not match.</br>
 
-> **Firmware Version** 
->Key: ```firmware_version```
->Value type: ```String```
->Example: ```{"finger_print":"0.0.2"}```
->Description: This is the current version of firmware running on this particular controller.
+> **Firmware Version** </br>
+>Key: ```firmware_version```</br>
+>Value type: ```String```</br>
+>Example: ```{"finger_print":"0.0.2"}```</br>
+>Description: This is the current version of firmware running on this particular controller.</br>
 
-> **Device ID** 
->Key: ```device_id```
->Value type: ```String```
->Example: ```{"device_id":"00:01:02:03:04:05:06"}```
->Description: This unique device ID is the Mac address of the device.
+> **Device ID** </br>
+>Key: ```device_id```</br>
+>Value type: ```String```</br>
+>Example: ```{"device_id":"00:01:02:03:04:05:06"}```</br>
+>Description: This unique device ID is the Mac address of the device.</br>
 
-> **WiFi Network Connection Status** 
->Key: ```wifi_connected```
->Value type: ```String```
->Example: ```{"wifi_connected":"true"}```
->Description: Indication as to whether or not the device is currently connected a WiFi network.  true if connected, false if not.
+> **WiFi Network Connection Status** </br>
+>Key: ```wifi_connected```</br>
+>Value type: ```String```</br>
+>Example: ```{"wifi_connected":"true"}```</br>
+>Description: Indication as to whether or not the device is currently connected a WiFi network.  true if connected, false if not.</br>
 
-> **Input** 
->Key: ```input```
->Value type: ```String```
->Example: ```{"input":"open"}```
->Description: The current status of the controllers on board input.  value:open if the input is open, value:closed if the input is closed.
+> **Input** </br>
+>Key: ```input```</br>
+>Value type: ```String```</br>
+>Example: ```{"input":"open"}```</br>
+>Description: The current status of the controllers on board input.  value:open if the input is open, value:closed if the input is closed.</br>
 
-> **Server Connection Status** 
->Key: ```server_connection```
->Value type: ```String```
->Example: ```{"server_connection":"good"}```
->Description: The current status of the controllers connection to the remote server.  Possible values are boot, good, or error.  If the previous server connection was successful value will be good.  If the previous server connection was unsuccessful the value will be error.  If the device has just booted and has not yet attempted a connection to the remote server the value will be boot.
+> **Server Connection Status** </br>
+>Key: ```server_connection```</br>
+>Value type: ```String```</br>
+>Example: ```{"server_connection":"good"}```</br>
+>Description: The current status of the controllers connection to the remote server.  Possible values are boot, good, or error.  If the previous server connection was successful value will be good.  If the previous server connection was unsuccessful the value will be error.  If the device has just booted and has not yet attempted a connection to the remote server the value will be boot.</br>
 
 ### Device Checkin with Remote Server via HTTPS
 The controller will, on interval, checkin with the remote server as configured.  Upon checkin the controller will report information to the remote server as documented here as well as accept a response from the server to reboot if needed.  If a reboot is desired simply respond with a device reboot request just as it is documented under the Reboot over USB section above. 
