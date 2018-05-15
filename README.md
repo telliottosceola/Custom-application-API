@@ -11,7 +11,7 @@ Controller accepts setting configurations sent via JSON format over USB connecti
 ### Configurable settings
 All settings documented here are stored in device EEPROM and will pursist device power cycles.  Changes to WiFi network settings will cause WiFi to disconnect temporarily and then connect with new WiFi network settings.
 
-> **WiFi SSID**\ 
+> **WiFi SSID**</br>
 >Key: ```ssid```
 >Value type: ```String```
 >Example: ```{"ssid":"my_wifi"}```
